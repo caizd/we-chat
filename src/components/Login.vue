@@ -1,7 +1,6 @@
 <template>
-  <div class="login-wrapper" transition="loginslide">
+  <div class="login-wrapper" >
     <div class="header">
-
     </div>
     <div class="body">
       <div class="-title">
@@ -21,10 +20,10 @@
 </template>
 
 <script>
-import CHAT from '../api/client'
+import CHAT from '../api/Client'
 import {randomColor, genUid} from '../util/index'
 export default {
-  name: 'login',
+  name: 'Login',
   data () {
     return {
       name: '',
@@ -32,7 +31,7 @@ export default {
       weichat: ''
     }
   },
-  ready () {
+  created () {
 
   },
   methods: {
@@ -54,7 +53,7 @@ export default {
         localStorage.setItem('userid', genUid())
       }
       CHAT.init(this.name)
-      this.$router.go('/')
+      this.$router.push('/chatInfo')
     }
   }
 
@@ -64,6 +63,8 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   .login-wrapper {
+    transition: all .3s ease;
+    transform: translate(100%, 0);
     background-color: #fff;
     position: absolute;
     top: 0;
@@ -161,14 +162,13 @@ export default {
     color: #999;
   }
   /* 必需 */
-  .loginslide-transition {
-    transition: all .3s ease;
-    transform: translate(100%, 0);
+  .loginslide-transition{
+
   }
   /* .loginslide-enter 定义进入的开始状态 */
   /* .loginslide-leave 定义离开的结束状态 */
-  .loginslide-leave,
-  .loginslide-enter {
+  .login-wrapper-leave,
+  .login-wrapper-enter {
     transform: translate(0%, 0);
   }
 

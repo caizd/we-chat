@@ -18,7 +18,7 @@
   import OtherMsg from './OtherMsg'
   import SelfMsg from './SelfMsg'
   import SystemMsg from './SystemMsg'
-  import CHAT from '../api/client'
+  import CHAT from '../api/Client'
 
   export default {
     name: 'ChatBody',

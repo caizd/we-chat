@@ -1,19 +1,25 @@
 <template>
-  <div class="head-wrapper">
-    <div class="-left">
+  <div class="chat">
+    <div class="head-wrapper">
+      <div class="-left">
+      </div>
+      <div class="-mid">
+        <p class="group-name">江湖人的江湖({{CHAT.onlineCount}})</p>
+      </div>
+      <router-link class="-right" to="/groupInfo" >
+        <i class="iconfont icon-group"></i>
+      </router-link>
     </div>
-    <div class="-mid">
-      <p class="group-name">江湖人的江湖({{CHAT.onlineCount}})</p>
-    </div>
-    <div class="-right"  v-link="'/groupinfo'">
-      <i class="iconfont icon-group"></i>
-    </div>
+    <ChatBody></ChatBody>
+    <ChatFoot></ChatFoot>
   </div>
 </template>
 
 <script>
-import Login from './login'
-import CHAT from '../api/client'
+import CHAT from '../api/Client'
+import ChatBody from '../components/ChatBody'
+import ChatFoot from '../components/ChatFoot'
+//  import GroupInfo from '../components/GroupInfo'
 export default {
   name: 'ChatHead',
   data () {
@@ -26,12 +32,19 @@ export default {
     console.log(11, CHAT.onlineCount)
   },
   components: {
-    Login
+    ChatBody,
+    ChatFoot
   }
 }
 </script>
 
 <style scoped>
+  .chat{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+  }
   .head-wrapper{
     background-color: #34352c;
     height: 50px;

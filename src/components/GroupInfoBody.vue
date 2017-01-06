@@ -70,7 +70,7 @@
 
 </template>
 <script>
-import CHAT from '../api/client'
+import CHAT from '../api/Client'
 import DialogUtil from './util/DialogUtil'
 import {randomColor} from '../util/index'
 export default{
@@ -88,7 +88,7 @@ export default{
 
     }
   },
-  ready () {
+  created () {
     console.log(CHAT.onlineUsers, 99)
     if (!localStorage) {
       alert('不支持本地保存')
@@ -133,7 +133,7 @@ export default{
         localStorage.removeItem('weichat')
       }
       this.CHAT.logout()
-      this.$router.go('/login')
+      this.$router.push('/')
     },
     showWeiChat (userObj) {
       console.log(userObj)

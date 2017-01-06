@@ -70,13 +70,13 @@ const CHAT = {
     this.socket = io.connect('ws://se1.clschina.com')
 
     //  告诉服务器端有用户登录
-    this.socket.emit('login', {userid: this.userid, username: this.username, color: this.color, weichat: this.weichat})
+    this.socket.emit('Login', {userid: this.userid, username: this.username, color: this.color, weichat: this.weichat})
     //  心跳包，30s左右无数据浏览器会断开连接Heartbeat
     setInterval(() => {
       this.socket.emit('heartbeat', 1)
     }, 10000)
     //  监听新用户登录
-    this.socket.on('login', function (obj) {
+    this.socket.on('Login', function (obj) {
       CHAT.updateSysMsg(obj, 'logout')
       CHAT.msgArr.push(obj)
     })

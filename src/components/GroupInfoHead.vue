@@ -1,8 +1,8 @@
 <template>
 <div class="group-info-head-wrap">
-	<div class="-left" v-link="'/'">
+	<router-link  class="-left" to="/chatInfo">
     <i class="iconfont icon-back"></i>
-  </div>
+  </router-link >
   <div class="-mid">
     <p class="group-name">江湖人的江湖({{CHAT.onlineCount}})</p>
   </div>
@@ -11,7 +11,7 @@
 </div>
 </template>
 <script>
-import CHAT from '../api/client'
+import CHAT from '../api/Client'
 import DialogUtil from './util/DialogUtil'
 export default{
   name: 'GroupInfoHead',
@@ -58,6 +58,7 @@ export default{
     min-width: 50px;
     align-items: center;
     justify-content: center;
+    text-decoration: none;
   }
   .group-info-head-wrap .-left .icon-back {
     font-size: 26px !important;
