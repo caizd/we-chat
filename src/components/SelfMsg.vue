@@ -30,6 +30,7 @@ export default {
     padding: 5px 5px 15px 5px;
     position: relative;
     overflow: hidden;
+    word-break: break-all;
     /* .-name{
       background-color: #fff;
       position: absolute;

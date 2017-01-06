@@ -1,22 +1,24 @@
 <template>
-  <div class="login-wrapper" >
-    <div class="header">
-    </div>
-    <div class="body">
-      <div class="-title">
-        江湖人的江湖
+  <transition to="loginslide">
+    <div class="login-wrapper" >
+      <div class="header">
       </div>
-      <div class="-name">
-        <label>群昵称：</label>
-        <input type="text" v-model="name" placeholder="10字以内">
+      <div class="body">
+        <div class="-title">
+          江湖人的江湖
+        </div>
+        <div class="-name">
+          <label>群昵称：</label>
+          <input type="text" v-model="name" placeholder="10字以内">
+        </div>
+        <div class="-login">
+          <span class="-btn" @click="login()">登录</span>
+        </div>
       </div>
-      <div class="-login">
-        <span class="-btn" @click="login()">登录</span>
+      <div class="foot">
       </div>
     </div>
-    <div class="foot">
-    </div>
-  </div>
+  </transition>
 </template>
 
 <script>
@@ -74,10 +76,10 @@ export default {
   }
   .login-wrapper .header {
     width: 100%;
-    height: 30%;
+    height: 36%;
     max-height: 300px;
-    background: url(../assets/1.jpg);
-    background-size: contain;
+    background: url(../assets/2.jpg) no-repeat;
+    background-size: 100%;
   }
   .login-wrapper .body {
     display: flex;
@@ -161,14 +163,10 @@ export default {
   .login-wrapper a {
     color: #999;
   }
-  /* 必需 */
-  .loginslide-transition{
-
-  }
   /* .loginslide-enter 定义进入的开始状态 */
   /* .loginslide-leave 定义离开的结束状态 */
-  .login-wrapper-leave,
-  .login-wrapper-enter {
+  .loginslide-leave,
+  .loginslide-enter {
     transform: translate(0%, 0);
   }
 
