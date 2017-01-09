@@ -47,6 +47,8 @@ export default {
     border:none;
     box-sizing: border-box;
     padding: 5px;
+    font-size: 22px;
+    color: #333;
   }
   .foot-wrapper .chat-sub{
     display: flex;

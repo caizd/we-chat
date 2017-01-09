@@ -4,6 +4,7 @@ const CHAT = {
   username: null,
   userid: null,
   color: null,
+  photo: null,
   socket: null,
   onlineCount: 0,
   onlineUsers: null,
@@ -23,7 +24,8 @@ const CHAT = {
         userid: this.userid,
         username: this.username,
         msg: msg,
-        color: this.color
+        color: this.color,
+        photo: this.photo
       }
       this.socket.emit('message', obj)
     } else {
@@ -51,7 +53,8 @@ const CHAT = {
     this.username = localStorage.getItem('name')
     this.color = localStorage.getItem('color')
     this.weichat = localStorage.getItem('weichat')
-    this.socket.emit('changeInfo', {userid: this.userid, username: this.username, color: this.color, weichat: this.weichat})
+    this.photo = localStorage.getItem('photo')
+    this.socket.emit('changeInfo', {userid: this.userid, username: this.username, color: this.color, weichat: this.weichat, photo: this.photo})
   },
   init: function () {
     /*
@@ -63,6 +66,7 @@ const CHAT = {
     this.username = localStorage.getItem('name')
     this.color = localStorage.getItem('color')
     this.weichat = localStorage.getItem('weichat')
+    this.photo = localStorage.getItem('photo')
 
     if (!this.userid) { return }
 

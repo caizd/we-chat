@@ -23,7 +23,7 @@
 
 <script>
 import CHAT from '../api/Client'
-import {randomColor, genUid} from '../util/index'
+import {randomColor, genUid, randomPhoto} from '../util/index'
 export default {
   name: 'Login',
   data () {
@@ -53,6 +53,7 @@ export default {
         localStorage.setItem('color', randomColor())
         localStorage.setItem('weichat', this.weichat)
         localStorage.setItem('userid', genUid())
+        localStorage.setItem('photo', randomPhoto())
       }
       CHAT.init(this.name)
       this.$router.push('/chatInfo')

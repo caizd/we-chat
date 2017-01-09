@@ -6,7 +6,7 @@
       </template>
       <template v-if="!msgObj.login&&!msgObj.logout">
         <other-msg v-if="msgObj.userid!=CHAT.userid" :name="msgObj.username" :msg="msgObj.msg" :color="msgObj.color"></other-msg>
-      <self-msg v-if="msgObj.userid==CHAT.userid" :msg="msgObj.msg" :color="msgObj.color"></self-msg>
+      <self-msg v-if="msgObj.userid==CHAT.userid" :msg="msgObj.msg" :color="msgObj.color" :photo="msgObj.photo" ></self-msg>
       </template>
     </template>
     <!-- <other-msg></other-msg> -->

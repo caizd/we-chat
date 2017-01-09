@@ -1,6 +1,6 @@
 <template>
 <div class="self-wrap">
-  <span class="-header" :style="{'background-color':color}">我</span>
+  <img class="-header" :src="photo" />
   <!-- <span class="-name">超级厉害</span> -->
   <div class="-msg">{{msg}}</div>
 </div>
@@ -20,7 +20,7 @@ export default {
   ready () {
     this.$el.scrollIntoView()
   },
-  props: ['msg', 'color']
+  props: ['msg', 'color', 'photo']
 }
 </script>
 <style scoped>
