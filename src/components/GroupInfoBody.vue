@@ -32,7 +32,7 @@
   <DialogUtil v-if="isShow" :fast-close="false">
     <div class="modify-box">
       <div class="-header" @click="changePhoto()">
-        <img class="-header" :src="photo" />
+        <img class="-img" :src="photo" />
         <span class="-notice">点击更换头像</span>
       </div>
       <div class="-name">
@@ -252,7 +252,7 @@ export default{
     padding: 10px;
   }
   .modify-box .-header {
-    height: 60px;
+    height: 80px;
     /*background-color: #777;*/
 
     display: flex;
@@ -262,8 +262,8 @@ export default{
   }
   .modify-box .-header .-img {
     display: block;
-    height: 40px;
-    width: 40px;
+    height: 64px;
+    width: 64px;
     background-color: #090;
     border-radius: 50%;
   }
@@ -278,7 +278,7 @@ export default{
     /*background-color: #eee;*/
 
     display: flex;
-    height: 40px;
+    height: 56px;
     align-items: center;
     font-size: 16px;
   }
@@ -292,6 +292,8 @@ export default{
     padding: 5px;
     color: #666;
     background-color: rgba(0, 0, 0, 0.02);
+    line-height: 25px;
+    font-size: 18px;
   }
   .modify-box .-name .-btn,
   .modify-box .-weichat .-btn,
@@ -305,6 +307,7 @@ export default{
     margin: 10px auto;
     color: #fff;
     font-weight: bolder;
+    border-radius: 3px;
   }
   .f-info {
     background-color: #fff;
