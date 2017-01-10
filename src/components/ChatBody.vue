@@ -1,11 +1,11 @@
 <template>
-  <div class="body-wrapper">
+  <div class="body-wrapper" id="body-wrapper">
     <template v-for="msgObj in CHAT.msgArr">
       <template v-if="msgObj.login">
         <system-msg :msg="msgObj.user.username"></system-msg>
       </template>
       <template v-if="!msgObj.login&&!msgObj.logout">
-        <other-msg v-if="msgObj.userid!=CHAT.userid" :name="msgObj.username" :msg="msgObj.msg" :color="msgObj.color"></other-msg>
+        <other-msg v-if="msgObj.userid!=CHAT.userid" :name="msgObj.username" :msg="msgObj.msg" :color="msgObj.color" :photo="msgObj.photo"></other-msg>
       <self-msg v-if="msgObj.userid==CHAT.userid" :msg="msgObj.msg" :color="msgObj.color" :photo="msgObj.photo" ></self-msg>
       </template>
     </template>

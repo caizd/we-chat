@@ -1,4 +1,6 @@
 import io from 'socket.io-client'
+import $ from 'jquery'
+
 const CHAT = {
   msgObj: document.getElementsByClassName('body-wrapper')[0],
   username: null,
@@ -7,10 +9,11 @@ const CHAT = {
   photo: null,
   socket: null,
   onlineCount: 0,
-  onlineUsers: null,
+  onlineUsers: [],
   msgArr: [],
   scrollToBottom: function () {
-    window.scrollTo(0, 900000)
+    console.log(document.getElementById('body-wrapper').scrollHeight)
+    document.getElementById('body-wrapper').scrollTop = document.getElementById('body-wrapper').scrollHeight
   },
   //  退出，本例只是一个简单的刷新
   logout: function () {
@@ -42,11 +45,6 @@ const CHAT = {
     this.onlineUsers = o.onlineUsers
     //  当前在线人数
     this.onlineCount = o.onlineCount
-    //  新加入用户的信息
-    // var user = o.user
-    //  更新在线人数
-    // var userhtml = ''
-    // var separator = ''
   },
   changeInfo () {
     this.userid = localStorage.getItem('userid')
@@ -96,6 +94,20 @@ const CHAT = {
     //  监听消息发送
     this.socket.on('message', function (obj) {
       CHAT.msgArr.push(obj)
+      if ((window.navigator.appVersion.match(/iphone/gi) || window.navigator.appVersion.match(/ipad/gi) || window.navigator.appVersion.match(/android/gi)) && !window.navigator.appVersion.match(/windows/gi)) {
+        CHAT.scrollToBottom()
+      } else {
+        var item = {
+          'img': obj.photo,
+          'info': obj.msg,
+          'href': 'javascript:;',
+          'close': false,
+          'speed': 10,
+          'bottom': 0,
+          'color': obj.color
+        }
+        $('body').barrager(item)
+      }
     })
   }
 }

@@ -1,13 +1,6 @@
- <template>
-    <div v-show="showButton" class="hello" id="hello">
-      <div class="msg"><input v-model="msg" @keyup.enter="send" value="" maxlength="10"/></div>
-      <div class="button" @click="send" >发送</div>
-    </div>
-</template>
-
 <script>
   import $ from 'jquery'
-  import CHAT from '../api/Chat'
+  import CHAT from '../api/Client'
 
   export default {
     name: 'Danmu',
@@ -22,7 +15,6 @@
       if ((window.navigator.appVersion.match(/iphone/gi) || window.navigator.appVersion.match(/ipad/gi) || window.navigator.appVersion.match(/android/gi)) && !window.navigator.appVersion.match(/windows/gi)) {
         $('body').css('background-size', '100% 100%')
         $('body').css('background-image', 'url(/static/img/beijingsj1.jpg)')
-        this.showButton = true
       }
       $.fn.barrager = function (barrage) {
         barrage = $.extend({
@@ -87,17 +79,12 @@
         console.log('浏览暂不支持localStorage')
       }
       if (window.localStorage) {
-        window.localStorage.setItem('name', CHAT.genUid())
+        window.localStorage.setItem('name', '弹幕')
         window.localStorage.setItem('userid', CHAT.genUid())
         window.localStorage.setItem('color', CHAT.randomColor())
         window.localStorage.setItem('photo', CHAT.randomPhoto())
       }
       CHAT.init('name')
-    },
-    methods: {
-      send: function () {
-        CHAT.submit(this.msg)
-      }
     }
   }
 </script>

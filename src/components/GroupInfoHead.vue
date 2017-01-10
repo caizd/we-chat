@@ -4,7 +4,7 @@
     <i class="iconfont icon-back"></i>
   </router-link >
   <div class="-mid">
-    <p class="group-name">江湖人的江湖({{CHAT.onlineCount}})</p>
+    <p class="group-name">易积通({{CHAT.onlineCount}})</p>
   </div>
   <div class="-right" @click="open()" >
   </div>

@@ -6,6 +6,7 @@ import GroupInfo from './components/GroupInfo'
 import VueRouter from 'vue-router'
 import Login from './components/Login'
 import App from './App'
+import '../static/css/barrager.css'
 
 Vue.use(VueRouter)
 // let router = new VueRouter()

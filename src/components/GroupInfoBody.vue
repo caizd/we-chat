@@ -1,26 +1,24 @@
 <template>
 <div class="group-info-body-wrap">
 	<div class="-bar"></div>
-	<div class="-members" >
-		<div class="-member" v-for="userObj in CHAT.onlineUsers" @click="showWeiChat(userObj)">
-			<span class="-header" :style="{'background-color':userObj.color}">
-				{{userObj.username.slice(-1)}}
-			</span>
-			<span class="-name">
-				{{userObj.username.slice(0,4)}}
-			</span>
-		</div>
-		<!-- 占位 -->
-		<div class="-member" v-for="i in 9">
-		</div>
-	</div>
+	<!--<div class="-members" >-->
+		<!--<div class="-member" v-for="userObj in CHAT.onlineUsers" @click="showWeiChat(userObj)">-->
+      <!--<img class="-header" :src="userObj.photo" />-->
+			<!--<span class="-name">-->
+				<!--{{userObj.username.slice(0,4)}}-->
+			<!--</span>-->
+		<!--</div>-->
+		<!--&lt;!&ndash; 占位 &ndash;&gt;-->
+		<!--<div class="-member" v-for="i in 9">-->
+		<!--</div>-->
+	<!--</div>-->
 	<div class="-bar"></div>
 	<div class="-self">
 		<div class="-title">
 			我在本群的信息
 		</div>
 		<div class="-info">
-			<span class="-header" :style="{'background-color':color}"></span>
+      <img class="-header" :src="photo" />
 			<span class="-name">{{name}}</span>
 			<span class="-modify" @click="show()">修改</span>
 		</div>
@@ -33,17 +31,13 @@
 	<div class="-bar"></div>
   <DialogUtil v-if="isShow" :fast-close="false">
     <div class="modify-box">
-      <div class="-header" @click="changeColor()">
-        <span class="-img" :style="{'background-color':color}"></span>
-        <span class="-notice">点击更换颜色</span>
+      <div class="-header" @click="changePhoto()">
+        <img class="-header" :src="photo" />
+        <span class="-notice">点击更换头像</span>
       </div>
       <div class="-name">
         <label>群昵称：</label>
         <input type="text" v-model="name" placeholder="10字以内">
-      </div>
-      <div class="-weichat">
-        <label>微信号：</label>
-        <input type="text"v-model="weichat" placeholder="方便私聊（选填）">
       </div>
       <div class="-save">
         <span class="-btn" @click="save()">保存</span>
@@ -55,10 +49,6 @@
       <div class="-name">
         <label>群昵称：</label>
         <input disabled="true" type="text" v-model="fname" placeholder="">
-      </div>
-      <div class="-weichat">
-        <label>微信号：</label>
-        <input disabled="true" type="text"v-model="fweichat" placeholder="不告诉你，群里自己要">
       </div>
       <div class="-save">
         <span class="-btn" @click="closeF()">关闭</span>
@@ -72,18 +62,17 @@
 <script>
 import CHAT from '../api/Client'
 import DialogUtil from './util/DialogUtil'
-import {randomColor} from '../util/index'
+import {randomPhoto} from '../util/index'
 export default{
   name: 'GroupInfoBody',
   data () {
     return {
       CHAT: CHAT,
-      color: localStorage.getItem('color') || '#666',
+      photo: localStorage.getItem('photo') || './static/photo/cute.png',
       name: 'redream',
       weichat: 'redream',
       isShow: false,
       fname: 'redream',
-      fweichat: 'redream',
       isShowF: false
 
     }
@@ -97,8 +86,8 @@ export default{
     if (localStorage.getItem('name')) {
       this.name = localStorage.getItem('name')
     }
-    if (localStorage.getItem('color')) {
-      this.color = localStorage.getItem('color')
+    if (localStorage.getItem('photo')) {
+      this.photo = localStorage.getItem('photo')
     }
     if (localStorage.getItem('weichat')) {
       this.weichat = localStorage.getItem('weichat')
@@ -108,15 +97,15 @@ export default{
     DialogUtil
   },
   methods: {
-    changeColor () {
-      this.color = randomColor()
-      localStorage.setItem('color', this.color)
+    changePhoto () {
+      this.photo = randomPhoto()
+      localStorage.setItem('photo', this.photo)
     },
     save () {
       this.name = this.name.slice(0, 10)
       if (localStorage) {
         localStorage.setItem('name', this.name)
-        localStorage.setItem('color', this.color)
+        localStorage.setItem('photo', this.photo)
         localStorage.setItem('weichat', this.weichat)
       }
       this.isShow = false
@@ -129,7 +118,7 @@ export default{
       if (localStorage) {
         localStorage.removeItem('name')
         localStorage.removeItem('userid')
-        localStorage.removeItem('color')
+        localStorage.removeItem('photo')
         localStorage.removeItem('weichat')
       }
       this.CHAT.logout()

@@ -5,7 +5,7 @@
       </div>
       <div class="body">
         <div class="-title">
-          江湖人的江湖
+          易积通
         </div>
         <div class="-name">
           <label>群昵称：</label>
@@ -121,6 +121,8 @@ export default {
     padding: 5px;
     color: #666;
     background-color: rgba(0, 0, 0, 0.02);
+    font-size: 18px;
+    line-height: 25px;
   }
   .login-wrapper .body .-login {
     display: flex;
