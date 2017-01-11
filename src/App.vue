@@ -11,7 +11,7 @@ import {randomColor, genUid, randomPhoto} from './util/index'
 
 export default {
   name: 'App',
-  date () {
+  data () {
     return {
       showChat: false
     }
